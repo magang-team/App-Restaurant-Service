@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>list tagihan</title>
+   <link rel="stylesheet" type="text/css" href="css.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	  <!-- Font Awesome -->
+	  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+	  <!-- Theme style -->
+	  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <style type="text/css">
+      td{
+        text-align: center;
+        width: 50px;
+        height: 60px;
+      }
+    </style>
+</head>
+<body>
+<section class="content">
+      <div class="container-fluid">
+        <div class="right">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">LIST PENAGIHAN</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px"><center>No Meja</center></th>
+                      <th><center>Nama</center></th>
+                      <th><center>Total Harga</center></th>
+                      <th style="width: 40px"><center>Status order</center></th>
+                      <th><center>Nota</center></th>
+                      <th><center>Action</center></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>Anonymous</td>
+                      <td>115.000</td>
+                      <td>Belum Bayar</td>
+                      <td><button type="button" class="btn btn-outline-secondary">Print</button></td>
+                      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Detail</button>
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                       <div class="modal-dialog modal-lg">
+                         <div class="modal-content">
+                           <section class="content">
+                           <div class="modal-header">
+                              <h4 class="modal-title" id="myLargeModalLabel">Tagihan Detail</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">×</span>
+                             </button>
+                           </div>
+
+                <!-- modal content -->
+
+                  <div class="px-5">
+                        <div class="ingfo">
+
+                        <!-- info pemesanan -->
+
+                           <table class="table-borderless">
+                              <tr>
+                                 <th class="float-left">Date</th>
+                                 <td class="ttk">:</td>
+                                 <td class="posisi">22-3-2021</td>
+                              </tr>
+                              <tr>
+                                 <th class="float-left">No Tlp</th>
+                                 <td class="ttk">:</td>
+                                 <td class="posisi">081298128421</td>
+                              </tr>
+                              <tr>
+                                 <th class="float-left">No Meja</th>
+                                 <td class="ttk">:</td>
+                                 <td class="posisi">2</td>
+                              </tr>
+                              <tr>
+                                 <th class="float-left">Total Harga</th>
+                                 <td class="ttk">:</td>
+                                 <td class="posisi">115.000</td>
+                              </tr>
+                              <tr>
+                                 <th class="float-left">Cara Bayar</th>
+                                 <td class="ttk"></td>
+                                 <td class="posisi">
+                                 <select class="custom-select custom-select-md mb-3">
+                                    <option selected>CASH</option>
+                                    <option value="1">KREDIT</option>
+                                 </select>
+                                 </td>
+                              </tr>
+                           </table>
+
+                        <!-- info pemasanan makanan -->
+
+                        <table class="table table-bordered selat">
+                             <thead>
+                               <tr>
+                                 <th scope="col">No</th>
+                                 <th scope="col">Product</th>
+                                 <th scope="col">Quantity</th>
+                                 <th scope="col">Price</th>
+                               </tr>
+                             </thead>
+                             <tbody>
+                               <tr>
+                                 <th class="col-2">1</th>
+                                 <td>Nasi Goreng</td>
+                                 <td>5</td>
+                                 <td>23.000</td>
+                               </tr>
+                             </tbody>
+                           </table>
+                        </div>
+                         </div>
+                       </div>
+                     </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+<!-- jQuery -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>              
+</body>
+</html>
