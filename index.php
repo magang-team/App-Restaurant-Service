@@ -1,3 +1,11 @@
+<?php
+    // session_start();
+    // if(!isset($_SESSION['login'])){
+    //     header("location:loginPage.php");
+    //     exit;
+    // }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +53,7 @@
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-            <a class="d-block">Alexander Pierce</a>
+            <a class="d-block">Pelanggan</a>
             <a class="d-block">087899509360</a>
             </div>
         </div>
@@ -73,7 +81,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/charts/chartjs.html" class="nav-link">
+                        <a href="index.php?page=menu" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Makanan</p>
                         </a>
@@ -92,16 +100,24 @@
         </div>
         <!-- /.sidebar -->
     </aside>
+    <div class="content-wrapper bg-white">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <?php
+                    @$page = $_GET['page'];
+                    switch ($page){
+                        case 'menu':
+                            include 'page/pageMenu.php';
+                            break;
+                    };
+                ?>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-        
-        </div>
-    </section>
-    <!-- /.content -->
-
-    <footer class="main-footer newcolor">
+    <footer class="main-footer">
         <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
@@ -109,7 +125,7 @@
         </div>
     </footer>
     <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-drkblue">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
