@@ -93,16 +93,17 @@
                                                                     <button type="button" name="btnMinus" class="btn minus-btn bg-light border rounded ">
                                                                         <i class="fas fa-minus"></i>
                                                                     </button>
-                                                                <input type="text" class="quantity" name="Mod_Quantity" onchange="this.form.submit();" value='.$value['quantity'].' size="2">
-                                                                <input type="hidden" name="menuId" value="'.$value['menuId'].'" />
+                                                                <input type="text" class="quantity" name="Mod_Quantity" onchange="this.form.submit();" value='.$value['quantity'].' size="2">                                                              
                                                                     <button type="button" name="btnPlus" class="btn plus-btn bg-light border rounded">   
                                                                         <i class="fas fa-plus"></i>
                                                                     </button>
+                                                                    <input type="hidden" name="menuId" value="'.$value['menuId'].'" />                                                                    
                                                             </form>
                                                         </td>
                                                         <td>'.$value['harga'].'</td>
                                                     </tr>
                                                 ';
+                                                
                                                 $total = $total + (int)$value['harga'] * (int)$value['quantity'];     
                                             }
                                         }else{
@@ -137,6 +138,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form method="POST" action="pesanan.php">
+                                        <input type="hidden" name="gTotal" value="<?=$total?>" />
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama</label>
                                             <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama ...">
