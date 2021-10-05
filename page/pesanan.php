@@ -4,9 +4,8 @@
     if(isset($_POST['purchase'])){
         $status="pesan";
         $total = $_POST['gTotal'];
-        $pay = "cash";
-        $query1 ="INSERT INTO `order`(`status_order`, `total_harga`, `nomor_meja`, `nama_pemesan`, `no_tlp`, `pesanan`, `cara_bayar`) 
-            VALUES ('$status','$total','null','$_POST[nama]','$_POST[tlp]','null','$pay')";
+        $query1 ="INSERT INTO `order`(`status_order`, `total_harga`, `nomor_meja`, `nama_pemesan`, `no_tlp`, `pesanan`) 
+            VALUES ('$status','$total','null','$_POST[nama]','$_POST[tlp]','null')";
         if(mysqli_query($koneksi,$query1)){
             $id_order= mysqli_insert_id($koneksi);
             $query2 = "INSERT INTO `order_user`(`id_order`, `nama_menu`, `quantity_menu`, `harga_menu`) VALUES (?,?,?,?)";
