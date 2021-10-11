@@ -17,7 +17,8 @@
             }
         }
     }
-	
+	$sql = "SELECT * FROM `data_meja`";
+    $result = mysqli_query($koneksi,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,6 +140,7 @@
                                 <div class="modal-body">
                                     <form method="POST" action="pesanan.php">
                                         <input type="hidden" name="gTotal" value="<?=$total?>" />
+                                        <input type="hidden" name="meja" value="<?= $dta['nomer_meja']?>" />
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama</label>
                                             <input type="text" name="nama" class="form-control" id="nama" placeholder="Enter Nama ...">
@@ -146,6 +148,18 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">No. Telepon</label>
                                             <input type="text" name="tlp" class="form-control" id="tlp" placeholder="Enter Nomor Telepon ...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">No. Meja</label>
+                                            <select name="meja" class="form-control">
+                                                <?php
+                                                    foreach($result as $dta){
+                                                ?>
+                                                <option value="<?= $dta['nomer_meja']?>"><?= $dta['nomer_meja']?></option>
+                                                <?php
+                                                    }
+                                                ?>    
+                                            </select>
                                         </div>
                                         <button type="submit" class="btn btn-block btn-primary btn-lg" name="purchase">Pesan</button>
                                     </form>
