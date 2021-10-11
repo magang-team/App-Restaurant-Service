@@ -6,6 +6,7 @@
         $noTlp = $_POST['orderTlp'];
         $date = $_POST['orderDate'];
         $total = $_POST['orderTotal'];
+        $meja = $_POST['orderMeja'];
     }
     
 ?>
@@ -54,7 +55,7 @@
                                         <div class="row-sm-12 d-flex ml-3 pt-3">
                                             <div class="col-md-3 px-0">No Meja</div>
                                             <div class="col-md-1 px-0">:</div>
-                                            <div class="col-md-8">Meja 1</div>
+                                            <div class="col-md-8">Meja <?=$meja?></div>
                                         </div>
                                         <div class="row-sm-12 d-flex ml-3 pt-3">
                                             <div class="col-md-3 px-0">Total</div>

@@ -48,7 +48,7 @@
                                         while($row = mysqli_fetch_assoc($result)){
                                             echo'
                                             <tr>
-                                                <td>MEJA 1</td>
+                                                <td>Meja '.$row["nomor_meja"].'</td>
                                                 <td>'.$row["nama_pemesan"].'</td>
                                                 <td>'.$row['total_harga'].'</td>
                                                 <td>'.$row['status_order'].'</td>
@@ -60,13 +60,12 @@
                                                 </form>
                                                 <form method="POST" class="form-submit" action="detail.php">
                                                 <td>
-                                                    
                                                     <button type="submit" class="btn btn-block bg-gradient-primary" name="detail">DETAILS</button>
                                                     <input type="hidden" name="orderId" value="'.$row['id_order'].'" />
                                                     <input type="hidden" name="orderTlp" value="'.$row['no_tlp'].'" />
                                                     <input type="hidden" name="orderDate" value="'.$row['created_at'].'" />
                                                     <input type="hidden" name="orderTotal" value="'.$row['total_harga'].'" />
-                                                    
+                                                    <input type="hidden" name="orderMeja" value="'.$row["nomor_meja"].'" />
                                                 </td>
                                                 </form>
                                             </tr>
