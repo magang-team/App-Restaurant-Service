@@ -2,11 +2,11 @@
     session_start();
     include('../config.php');
     if(isset($_POST['purchase'])){
-        $status="pesan";
-
-        
+        $status="Belum Bayar";
+        $total = $_POST['gTotal'];
+        $meja = $_POST['meja'];
         $query1 ="INSERT INTO `order`(`status_order`, `total_harga`, `nomor_meja`, `nama_pemesan`, `no_tlp`, `pesanan`) 
-            VALUES ('$status','null','null','$_POST[nama]','$_POST[tlp]','null')";
+            VALUES ('$status','$total','$meja','$_POST[nama]','$_POST[tlp]','null')";
         if(mysqli_query($koneksi,$query1)){
             $id_order= mysqli_insert_id($koneksi);
             $query2 = "INSERT INTO `order_user`(`id_order`, `nama_menu`, `quantity_menu`, `harga_menu`) VALUES (?,?,?,?)";
