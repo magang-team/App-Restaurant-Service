@@ -4,6 +4,7 @@
     $sql = "SELECT * FROM `order` WHERE id_order = $orderId";
     $result = mysqli_query($koneksi,$sql);
     $dta     = mysqli_fetch_assoc($result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +46,7 @@
                                 <form method="POST" action="test.php">
                                         <div class="form-group">
                                             <label for="uang">Jumlah Uang</label>
-                                            <input type="text" class="form-control " id="bayar" name="bayar" onchange="pembayaran()" autocomplete="off">
+                                            <input type="text" class="form-control " id="bayar" name="bayar" onchange="pembayaran()" autocomplete="off" required>
                                         </div>
                                       
                                             <label for="cara">Cara Bayar</label>
@@ -75,26 +76,27 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="submit" class="btn btn-primary" name="btnBayar">Bayar</button>
+                                        <button type="submit" class="btn btn-primary" name="btnBayar" id="btnBayar" disabled>Bayar</button>
                                         <input type="hidden" name="id" value="<?=$orderId?>" />
                                 </form> 
-                                <?php 
-                                    if(isset($dta['id_order']) && empty($dta['cara_bayar']) && empty($dta['jumlah_uang'])){
-                                        echo'<button type="submit" class="btn btn-primary disabled" name="btnPrint" >Print</button>';
-                                    }
-                                    else{
-                                        echo'
-                                        <form method="POST" action="print.php">
-                                            <button type="submit" class="btn btn-primary" name="btnPrint">Print</button>
-                                            <input type="hidden" id="sisaUang" name="sisaUang" value=""/>
-                                            <input type="hidden" name="hargaTotal" value="'.$dta['total_harga'].'"/>
-                                            <input type="hidden" name="bayar" value="'.$dta['jumlah_uang'].'"/>
-                                            <input type="hidden" name="tanggal" value="'.$dta['created_at'].'"/>
-                                            <input type="hidden" name="id" value="'.$orderId.'" />
-                                        </form>
-                                        ';
-                                    }
-                                ?>
+                                        <?php 
+                                            if(isset($dta['id_order']) && empty($dta['cara_bayar']) && empty($dta['jumlah_uang'])){
+                                                echo'<button type="submit" class="btn btn-primary disabled" name="btnPrint" >Print</button>';
+                                            }
+                                            else{
+                                                echo'
+                                                <form method="POST" action="print.php">
+                                                    <button type="submit" class="btn btn-primary" name="btnPrint">Print</button>
+                                                    <input type="hidden" id="sisaUang" name="sisaUang" value=""/>
+                                                    <input type="hidden" name="hargaTotal" value="'.$dta['total_harga'].'"/>
+                                                    <input type="hidden" name="bayar" value="'.$dta['jumlah_uang'].'"/>
+                                                    <input type="hidden" name="tanggal" value="'.$dta['created_at'].'"/>
+                                                    <input type="hidden" name="id" value="'.$orderId.'" />
+                                                </form>
+                                                ';
+                                            }
+                                        ?>
+                                    </div>
                                    
                             </div>
                         </div>
@@ -112,9 +114,18 @@
         function pembayaran(){
             var jmlh_uang = parseInt(document.getElementById("bayar").value);
             var total = parseInt(document.getElementById("hargaTotal").value);
+            
             kembalian = jmlh_uang - total;
             document.getElementById("sisaUang").value=kembalian;
+            
+            if(jmlh_uang<=total){
+                document.getElementById("btnBayar").setAttribute("disabled","disabled");
+            }else{
+                document.getElementById("btnBayar").removeAttribute("disabled");
+                document.getElementById("btnBayar").classList.remove("disabled")
+            }
         }
+      
     </script>
 
     <!-- jQuery -->

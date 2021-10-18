@@ -79,7 +79,6 @@
                                             <?php
                                                 $no = 1;
                                                 $order_query="SELECT * FROM `order_user`WHERE `id_order`='$orderId'";
-                                                print_r($order_query);
                                                 $order_result= mysqli_query($koneksi,$order_query);
                                                 if(mysqli_num_rows($order_result)>0){
                                                     while($order = mysqli_fetch_assoc($order_result)){

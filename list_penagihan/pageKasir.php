@@ -42,7 +42,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM `order` ORDER BY `id_order` DESC ";
+                                        $sql = "SELECT * FROM `order`ORDER BY `id_order` DESC ";
                                         $result = mysqli_query($koneksi,$sql);
                                         
                                         while($row = mysqli_fetch_assoc($result)){
