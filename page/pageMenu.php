@@ -1,13 +1,15 @@
 <?php
-    session_start();
+    
     require_once('config.php');
+
+    $cat_id = $_GET['cid'];
 
     if(isset($_POST['add'])){
         if(isset($_SESSION['cart'])){
              $item_array_id = array_column($_SESSION['cart'],'menuId');
              if(in_array($_POST['menuId'],$item_array_id)){
                  echo'<script>alert("product readyy")</script>';
-                 echo'<script>window.location("/pageMenu.php")</script>';
+                 echo'<script>window.location="index.php?cid='.$cat_id.'&page=menu"</script>';
              }else{
  
                  $count = count($_SESSION['cart']);
@@ -20,6 +22,7 @@
                  );
                  $_SESSION['cart'][$count] = $item_array;
              };
+            
         }else{
  
          $item_array = array(
@@ -29,9 +32,11 @@
              'foto' => $_POST['Image'],
              'nama_menu' => $_POST['Menu']
          );
-         $_SESSION['cart'][0] = $item_array;
+         
+         $_SESSION['cart'][0] = $item_array;      
          print_r($_SESSION['cart']);
         };
+        echo'<script>window.location="index.php?cid='.$cat_id.'&page=menu"</script>';
     };
 
     
@@ -44,30 +49,26 @@
   <title>AdminLTE 3 | Dashboard</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <style>
-.content-image {
-    width: 100%
-}
 
+  <link rel="stylesheet" href="dist/css/imagehover.min.css">
 
-</style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+    
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <!-- SidebarSearch Form -->
             <div class="row py-5">
-                <div class="col">
+                <div class="col-md-5">
                     <div class="form-inline-block">
                         <div class="input-group input-group-sm rounded">
                         <input class="form-control rounded-lg" id="keyword" type="search" placeholder="Search..." aria-label="Search">
@@ -79,44 +80,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <button class="btn float-right">
-                    <a href="page/cart.php">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
-                    
-                    <?php
-                    
-                    if(isset($_SESSION['cart'])){
-                        $count = count($_SESSION["cart"]);
-                        echo'<span class="badge badge-info navbar-badge" name="cart_count">'.$count.'</span>';
-                    }else{
-                        echo'<span class="badge badge-info navbar-badge" name="cart_count">0</span>';
-                    }
-                    ?>
-                    </a>
-                    </button>
-                </div>
             </div>
             <div class="row" id="show">
                 <?php
-                $sql = mysqli_query($koneksi, "SELECT * FROM data_menu") or die(mysqli_error($koneksi));
+
+                $sql = mysqli_query($koneksi, "SELECT * FROM data_menu WHERE id_kategori = '{$cat_id}'") or die(mysqli_error($koneksi));
                 while($r1 = mysqli_fetch_assoc($sql)){
                     echo'
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6 col-sm-8"><h3 class="card-title">'.$r1['nama_menu'].'</h3></div>
-                                        <div class="col-6 col-ms-4"><h5 class="card-title">Rp.'.$r1['harga_menu'].'</h5></div>
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col-12"><h3>'.$r1['nama_menu'].'</h3></div>
+                                            <div class="col-12"><h5>Rp.'.$r1['harga_menu'].'</h5></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <div class="content">
-                                        <div class="content-overlay"></div>
-                                        <img class="img-fluid content-image" src="dist/img/'.$r1['foto_menu'].'" style="height:150px">
-                                        <div class="content-details fadeIn-bottom">
-                                            <p class="content-text">'.$r1['deskripsi'].'</p>
+                                    <div class="content ">
+                                        <div class="imghvr-fade">
+                                        <img class="img-fluid" src="dist/img/'.$r1['foto_menu'].'" style=" width:100%; height: 300px !important;">
+                                            <figcaption>
+                                                <h3>Deskripsi :</h3>
+                                                <p class="text-justify">'.$r1['deskripsi'].'</p>
+                                            </figcaption><a href="javascript:;"></a>
                                         </div>
                                     </div>
                                     <div class="info">
@@ -171,11 +160,7 @@
         xhr.send();
     });
 </script>
-<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/dist/js/demo.js"></script>
+
 </body>

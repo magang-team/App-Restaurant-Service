@@ -3,25 +3,30 @@
 
     $keyword = $_GET["keyword"];
 
-    $sql = mysqli_query($koneksi, "SELECT * FROM data_menu WHERE nama_menu LIKE '%" . $keyword . "%'");
+    $sql = mysqli_query($koneksi, "SELECT * FROM data_menu WHERE nama_menu LIKE '%$keyword%' OR deskripsi LIKE '%$keyword%'");
     
     while($r1 = mysqli_fetch_assoc($sql)){
 ?>    
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-sm-8"><h3 class="card-title"><?=$r1['nama_menu']?></h3></div>
-                    <div class="col-6 col-ms-4"><h5 class="card-title"><?=$r1['harga_menu']?></h5></div>
+                <div class="card-title">
+                    <div class="row">
+                        <div class="col-12"><h3><?=$r1['nama_menu']?></h3></div>
+                        <div class="col-12"><h5>Rp.<?=$r1['harga_menu']?></h5></div>
+                    </div>
                 </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <div class="content-details fadeIn-bottom">
-                    <p><?=$r1['deskripsi']?></p>
-                </div>
-                <div class="img-fluid">
-                <img class="img-fluid content-image" src="dist/img/<?=$r1['foto_menu']?>" style="max-height:150px">
+                <div class="content ">
+                    <div class="imghvr-fade">
+                    <img class="img-fluid" src="dist/img/<?=$r1['foto_menu']?>" style=" width:100%; height: 300px !important;">
+                        <figcaption>
+                            <h3>Deskripsi :</h3>
+                            <p class="text-justify"><?=$r1['deskripsi']?></p>
+                        </figcaption><a href="javascript:;"></a>
+                    </div>
                 </div>
                 <div class="info">
                     <form method="post"class="form-submit">
