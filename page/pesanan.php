@@ -2,7 +2,7 @@
     session_start();
     include('../config.php');
     if(isset($_POST['purchase'])){
-        $status="pesan";
+        $status="Belum Bayar";
         $total = $_POST['gTotal'];
         $meja = $_POST['meja'];
         $query1 ="INSERT INTO `order`(`status_order`, `total_harga`, `nomor_meja`, `nama_pemesan`, `no_tlp`, `pesanan`) 

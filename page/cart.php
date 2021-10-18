@@ -77,10 +77,10 @@
                             <table action="index.php?page=cart" method="get" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                <th class="col-4"></th>
-                                <th class="col-2">Menu</th>
-                                <th class="col-4">Quantity</th>
-                                <th class="col-2">Price</th>
+                                    <th style="width: 50%"> </th>
+                                    <th style="width:  8.33%">Menu</th>
+                                    <th style="width: 25%">Quantity</th>
+                                    <th style="width: 16.66%">Price</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,11 +93,11 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6 pr-0">
-                                                            <img class="img-circle img-fluid" src="dist/img/'.$value['foto'].'" >
+                                                            <img class="img-circle img-fluid" src="dist/img/'.$value['foto'].'" style=" width:100%; height: 100px !important;">
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><h6>'.$value['nama_menu'].'</h6></td>
+                                                <td><p class="text-break">'.$value['nama_menu'].'</p></td>
                                                 <td>
                                                 <div class="row">
                                                 <div class="col-md-6">
@@ -138,7 +138,13 @@
                 </div>
                 <div class="col-6 mb-5">
                     <div class="col-md-4 ">
-                        <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">Pesan</button>
+                        <?php
+                            if(empty($_SESSION['cart'])){
+                                echo'<button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal" data-target="#modal-default" disabled>Pesan</button>';
+                            }else{
+                                echo'<button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal" data-target="#modal-default">Pesan</button>';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -147,7 +153,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Default Modal</h4>
+                            <h4 class="modal-title">CEKOUT PESANAN</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
