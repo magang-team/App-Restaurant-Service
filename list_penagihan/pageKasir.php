@@ -1,5 +1,10 @@
 <?php
     include('../config.php');
+    
+    if(!isset($_SESSION['login'])){
+        echo'<script>window.location="../pageLogin.php"</script>';
+        exit; 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

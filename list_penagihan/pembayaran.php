@@ -1,5 +1,11 @@
 <?php
+    session_start();
     include('../config.php');
+
+    if(!isset($_SESSION['login'])){
+        echo'<script>window.location="../pageLogin.php"</script>';
+        exit; 
+    }
     $orderId = $_POST['orderId'];
     $sql = "SELECT * FROM `order` WHERE id_order = $orderId";
     $result = mysqli_query($koneksi,$sql);

@@ -1,6 +1,11 @@
 <?php
+    session_start();
     include('../config.php');
 
+    if(!isset($_SESSION['login'])){
+        echo'<script>window.location="../pageLogin.php"</script>';
+        exit; 
+    }
     if(isset($_POST['detail'])){
         $orderId = $_POST['orderId'];
         $noTlp = $_POST['orderTlp'];
