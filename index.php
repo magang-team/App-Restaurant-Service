@@ -4,6 +4,17 @@ include("config.php");
 
     $sql= "SELECT * FROM category_menu";
     $result = mysqli_query($koneksi, $sql);
+
+    if(isset($_GET['cid'])){
+        $cty_id = $_GET['cid'];
+    }
+
+    @$page = $_GET['page'];
+    if($page == 'menu'){
+        $dmenu = "menu-open";
+        $mactive ="active";
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +45,9 @@ include("config.php");
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="pageLogin.php" role="button"><i class="fas fa-user fa-md"></i></a>
+                </li>
                 <li class="nav-item">
                     <button class="btn float-right">
                         <a href="index.php?page=cart">
@@ -82,16 +96,16 @@ include("config.php");
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+            <li class="nav-item">
+                <a href="index.php" class="nav-link <?=$dash?>">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
+            <li class="nav-item <?=$dmenu?>">
+                <a href="#" class="nav-link <?=$mactive?>">
                 <i class="nav-icon fas fa-th"></i>
                     <p>
                         Menu Restaurant
@@ -100,10 +114,19 @@ include("config.php");
                 </a>
                 <ul class="nav nav-treeview">
                 <?php
+                    $active="";
                     while($row = mysqli_fetch_assoc($result)){
+
+                        if(isset($_GET['cid'])){
+                            if($row['id_kategori'] == $cty_id){
+                                $active = "active";
+                            }else{
+                                $active = "";
+                            }
+                        }
                         echo'
                         <li class="nav-item">
-                            <a href="index.php?cid='.$row['id_kategori'].'&page=menu" class="nav-link">
+                            <a href="index.php?cid='.$row['id_kategori'].'&page=menu" class="nav-link '.$active.'">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>'.$row['nama_kt'].'</p>
                             </a>

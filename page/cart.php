@@ -7,6 +7,7 @@
             // add product to cart
             case 'empty': 
                 unset($_SESSION['cart']);
+                echo'<script>window.location="index.php?page=cart"</script>';
             break;
         }
     }
@@ -77,10 +78,10 @@
                             <table action="index.php?page=cart" method="get" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th style="width: 50%"> </th>
-                                    <th style="width:  8.33%">Menu</th>
-                                    <th style="width: 25%">Quantity</th>
-                                    <th style="width: 16.66%">Price</th>
+                                    <th > </th>
+                                    <th >Menu</th>
+                                    <th >Quantity</th>
+                                    <th >Price</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,23 +93,21 @@
                                             <tr>
                                                 <td>
                                                     <div class="row">
-                                                        <div class="col-md-6 pr-0">
-                                                            <img class="img-circle img-fluid" src="dist/img/'.$value['foto'].'" style=" width:100%; height: 100px !important;">
-                                                        </div>
+                                                        <img class="img-circle img-fluid" src="dist/img/'.$value['foto'].'" style=" width:10vw; height: 12vw !important;">
                                                     </div>
                                                 </td>
-                                                <td><p class="text-break">'.$value['nama_menu'].'</p></td>
+                                                <td><p>'.$value['nama_menu'].'</p></td>
                                                 <td>
                                                 <div class="row">
-                                                <div class="col-md-6">
-                                                    <form action="index.php?page=cart" method="POST">
-                                                        <input type="number" class="form-control form-control-sm text-center" name="Mod_Quantity" onchange="this.form.submit();" value='.$value['quantity'].' autocomplete="off"> 
-                                                        <input type="hidden" name="menuId" value="'.$value['menuId'].'" />
-                                                    </form>
-                                                </div>
+                                                    <div class="col-md-6">
+                                                        <form action="index.php?page=cart" method="POST">
+                                                            <input type="number" class="form-control form-control-sm text-center" name="Mod_Quantity" onchange="this.form.submit();" value='.$value['quantity'].' autocomplete="off"> 
+                                                            <input type="hidden" name="menuId" value="'.$value['menuId'].'" />
+                                                        </form>
+                                                    </div>
                                                 </div>
                                                 </td>
-                                                <td>Rp.'.$value['harga'].'</td>
+                                                <td><p>Rp.'.$value['harga'].'</p></td>
                                             </tr>
                                         ';
                                         if($value['quantity'] < 1 ){

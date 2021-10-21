@@ -52,7 +52,7 @@
                                 <form method="POST" action="test.php">
                                         <div class="form-group">
                                             <label for="uang">Jumlah Uang</label>
-                                            <input type="text" class="form-control " id="bayar" name="bayar" onchange="pembayaran()" autocomplete="off" required>
+                                            <input type="number" class="form-control " id="bayar" name="bayar" onchange="pembayaran()" autocomplete="off" required>
                                         </div>
                                       
                                             <label for="cara">Cara Bayar</label>
@@ -77,7 +77,7 @@
                                             <div class="col-md-3 px-0">Kembalian</div>
                                             <div class="col-md-1 px-0">:</div>
                                             <div class="col-md-8">
-                                                <input type="numer" class="form-control form-control-border bg-white" id="sisaUang" name="sisaUang" disabled/>
+                                                <input type="number" class="form-control form-control-border bg-white" id="sisaUang" name="sisaUang" disabled/>
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
             var total = parseInt(document.getElementById("hargaTotal").value);
             
             kembalian = jmlh_uang - total;
-            document.getElementById("sisaUang").value=kembalian;
+            parseInt(document.getElementById("sisaUang").value=kembalian);
             
             if(jmlh_uang<=total){
                 document.getElementById("btnBayar").setAttribute("disabled","disabled");

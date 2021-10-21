@@ -5,7 +5,7 @@ session_unset();
 session_destroy();
 $_SESSION =[];
 
-echo'<script>window.location="pageLogin.php"</script>';
+echo'<script>window.location="index.php"</script>';
 exit;
 
 ?>

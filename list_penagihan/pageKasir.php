@@ -34,7 +34,7 @@
                     <div class="col-12">
                         <h1>LIST  TAGIHAN</h1>
                         <div class="card">
-                            <div class="card-body table-responsive p-0 "style="height: 570px;">
+                            <div class="card-body table-responsive p-0 "style="height: 470px;">
                                 <table class="table table-bordered table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>

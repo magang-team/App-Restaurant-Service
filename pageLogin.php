@@ -50,7 +50,7 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
 </head>
-<body class="hold-transition login-page"style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('dist/img/photo1.png') no-repeat; background-size: cover;">
+<body class="hold-transition login-page"style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('dist/img/bg.jpg') no-repeat; background-size: cover;">
 <div class="login-box">
     <div class="card card-outline card-secondary pt-5 pb-3">
         <div class="card-body login-card-body">
